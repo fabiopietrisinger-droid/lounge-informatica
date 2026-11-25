@@ -1,0 +1,33 @@
+/* Página de links da bio do Instagram (independente do restante do site) */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { min-height: 100vh; background: radial-gradient(90% 40% at 15% 0, #9D7BFF40, transparent 70%), radial-gradient(90% 40% at 90% 8%, #35D8FF33, transparent 70%), #0B1020; color: #F3F6F9; font-family: Poppins, Arial, sans-serif; line-height: 1.5; text-align: center; }
+main { width: min(440px, 100% - 32px); margin-inline: auto; padding: 40px 0 calc(40px + env(safe-area-inset-bottom)); }
+a { color: inherit; text-decoration: none; }
+:focus-visible { outline: 3px solid #35D8FF; outline-offset: 3px; }
+
+header img { display: block; margin: 0 auto 14px; }
+h1 { font-size: 1.5rem; font-weight: 800; line-height: 1.2; }
+header p { color: #C5D2E0; font-size: .95rem; }
+
+nav { display: grid; gap: 16px; margin: 30px 0 36px; }
+nav a { transition: transform .15s, filter .15s; }
+nav a:hover { filter: brightness(1.12); }
+nav a:active { transform: scale(.98); }
+
+.zap { display: flex; align-items: center; justify-content: center; gap: 12px; min-height: 64px; border-radius: 16px; background: #25D366; color: #06210F; font-weight: 700; font-size: 1.05rem; box-shadow: 0 0 28px #25D36666; }
+.icone { width: 28px; height: 28px; background: currentColor; -webkit-mask: url("/assets/whatsapp.svg") center / contain no-repeat; mask: url("/assets/whatsapp.svg") center / contain no-repeat; }
+
+.cartao { display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; min-height: 132px; padding: 18px 20px; text-align: left; border: 1px solid; }
+.cartao strong { font-size: 1.45rem; line-height: 1.2; }
+.cartao span { font-size: .92rem; color: #E3EAF2; }
+.trabalho { border-radius: 16px; border-color: #48A9D8; background: linear-gradient(90deg, #192D46f2 25%, #192D4655), url("/assets/empresas-home-office-800.webp") center / cover, #192D46; }
+.gamer { border-radius: 2px; border-color: #9D7BFF; box-shadow: 0 0 22px #9D7BFF66; background: linear-gradient(90deg, #0B1020f2 25%, #0B102040), url("/assets/gamer-setup-800.webp") center / cover, #0B1020; }
+.gamer strong { font-family: "Chakra Petch", Poppins, sans-serif; color: #B9A1FF; }
+
+.site { display: grid; place-items: center; min-height: 52px; border: 1px solid #3A4766; border-radius: 16px; font-weight: 600; }
+
+section { border-top: 1px solid #ffffff26; padding-top: 24px; font-size: .92rem; color: #C5D2E0; }
+h2 { font-size: 1rem; color: #F3F6F9; margin-bottom: 6px; }
+.local { margin-top: 12px; font-size: .84rem; color: #8F9AB5; }
+
+@media (prefers-reduced-motion: reduce) { nav a { transition: none; } }
