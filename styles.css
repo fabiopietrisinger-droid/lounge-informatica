@@ -57,6 +57,10 @@ nav a:hover { text-decoration: underline; text-underline-offset: 6px; }
 .versions a[aria-current="page"] { background: var(--navy); color: #fff; }
 
 /* página inicial: escolha da versão */
+.inicio { display: flex; flex-direction: column; min-height: 100vh; }
+.inicio main { flex: 1; display: flex; flex-direction: column; }
+.inicio .choices { flex: 1; }
+.inicio .ask { width: min(1140px, 100% - 40px); }
 .ask { padding: 52px 0 36px; }
 .ask p { margin-top: 12px; color: var(--gray); }
 .choices { display: grid; grid-template-columns: 1fr 1fr; }
