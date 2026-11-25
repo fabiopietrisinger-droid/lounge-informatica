@@ -1,38 +1,70 @@
-// Cena do gabinete: é só uma demonstração visual, não mede nada no aparelho do visitante.
+// Animações ilustrativas da página gamer: nada aqui mede o aparelho do visitante.
 (() => {
-  const gabinete = document.querySelector(".gabinete");
-  const numero = document.getElementById("temp");
-  const botaoJogo = document.getElementById("simular");
   const semMovimento = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  let temp = 38;
-  let jogando = false;
-  let velocidade = 1;
 
-  const mostrar = () => {
-    numero.textContent = `${Math.round(temp)}°`;
-    gabinete.style.setProperty("--temp-p", temp);
-  };
-
-  // Fans aceleram e desaceleram aos poucos, sem saltos
-  const ajustarFans = () => {
-    gabinete.getAnimations({ subtree: true })
-      .filter((a) => a.animationName === "rodar" || a.animationName === "fluir")
-      .forEach((a) => a.updatePlaybackRate(velocidade));
-  };
-
+  // Painel de temperatura do water cooler
+  const gabinete = document.querySelector(".gabinete");
+  const temperatura = document.getElementById("temp");
   setInterval(() => {
-    if (document.hidden) return;
-    const alvo = (jogando ? 64 : 38) + (Math.random() * 3 - 1.5);
-    temp += (alvo - temp) * (semMovimento ? 1 : 0.14);
-    velocidade += ((jogando ? 2.8 : 1) - velocidade) * 0.14;
-    mostrar();
-    if (!semMovimento) ajustarFans();
-  }, 400);
+    if (document.hidden || semMovimento) return;
+    const temp = 38 + (Math.random() * 4 - 2);
+    temperatura.textContent = `${Math.round(temp)}°`;
+    gabinete.style.setProperty("--temp-p", temp);
+  }, 1200);
 
-  botaoJogo.addEventListener("click", () => {
-    jogando = !jogando;
-    botaoJogo.setAttribute("aria-pressed", jogando);
-  });
+  // Placa de vídeo e FPS: ciclo de "antes" e "depois" do upgrade
+  const palco = document.querySelector(".fps-palco");
+  const numero = document.getElementById("fps-numero");
+  const fase = palco.querySelector(".medidor-fase");
+  const ANTES = 45;
+  const DEPOIS = 120;
 
-  mostrar();
+  // avanço vai de 0 (antes) a 1 (depois)
+  const mostrar = (avanco, oscilacao = 0) => {
+    const depois = avanco > 0.5;
+    palco.dataset.fase = depois ? "depois" : "antes";
+    fase.textContent = depois ? "Depois do upgrade" : "Antes do upgrade";
+    numero.textContent = Math.round(ANTES + (DEPOIS - ANTES) * avanco + oscilacao);
+    palco.style.setProperty("--desenho", 40 + 60 * avanco);
+  };
+
+  if (semMovimento) {
+    mostrar(1);
+    return;
+  }
+
+  let visivel = false;
+  let tempo = 0;
+  let anterior = null;
+  let oscilacao = 0;
+  let ultimaTroca = 0;
+  let ventoinhas = null;
+
+  const quadro = (agora) => {
+    if (!visivel) return;
+    tempo = (tempo + (anterior === null ? 0 : agora - anterior)) % 8000;
+    anterior = agora;
+    // 3s antes, 1,6s subindo, 3,4s depois
+    const t = Math.min(Math.max((tempo - 3000) / 1600, 0), 1);
+    const avanco = t * t * (3 - 2 * t);
+    if (agora - ultimaTroca > 250) {
+      ultimaTroca = agora;
+      oscilacao = Math.random() * 4 - 2;
+      ventoinhas ??= palco.getAnimations({ subtree: true }).filter((a) => a.animationName === "rodar");
+      ventoinhas.forEach((a) => a.updatePlaybackRate(0.6 + avanco * 2));
+    }
+    mostrar(avanco, oscilacao);
+    requestAnimationFrame(quadro);
+  };
+
+  // Começa do "antes" quando a seção aparece na tela
+  new IntersectionObserver(([entrada]) => {
+    if (entrada.isIntersecting === visivel) return;
+    visivel = entrada.isIntersecting;
+    if (visivel) {
+      tempo = 0;
+      anterior = null;
+      requestAnimationFrame(quadro);
+    }
+  }, { threshold: 0.35 }).observe(palco);
 })();

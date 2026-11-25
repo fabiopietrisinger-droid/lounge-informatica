@@ -41,7 +41,6 @@
 
   <main id="conteudo">
     <section class="hero">
-      <div class="piso" aria-hidden="true"></div>
       <div class="wrap hero-grid">
         <div class="hero-text">
           <h1>Seu setup rendendo o que ele pode</h1>
@@ -77,10 +76,7 @@
             </div>
             <div class="torre-pes"><span></span><span></span></div>
           </div>
-          <div class="painel">
-            <button type="button" id="simular" aria-pressed="false">Simular jogo</button>
-          </div>
-          <p class="rig-nota">Demonstração ilustrativa. A temperatura não é uma medição real.</p>
+          <p class="rig-nota">Animação ilustrativa. A temperatura não é uma medição real.</p>
         </div>
       </div>
       <div class="wrap">
@@ -111,6 +107,35 @@
           <div><dt>Upgrade de SSD e memória</dt><dd>Indicação de peças compatíveis com o que você já tem.</dd></div>
           <div><dt>Montagem e configuração</dt><dd>Montagem do equipamento, instalação do sistema e ajustes iniciais.</dd></div>
         </dl>
+      </div>
+    </section>
+
+    <section class="block fps" id="fps">
+      <div class="wrap">
+        <div class="fps-intro">
+          <h2>Placa de vídeo e FPS</h2>
+          <p>Quando a placa de vídeo é o que limita o jogo, um upgrade pode aumentar os quadros por segundo. O diagnóstico vem antes, para saber se o problema é ela mesmo.</p>
+        </div>
+        <div class="fps-palco" data-fase="antes">
+          <div class="gpu" aria-hidden="true">
+            <div class="gpu-corpo">
+              <div class="fan"><i></i></div>
+              <div class="fan"><i></i></div>
+              <div class="fan"><i></i></div>
+            </div>
+            <div class="gpu-contatos"></div>
+          </div>
+          <div class="medidor" role="img" aria-label="Exemplo ilustrativo: de 45 para 120 quadros por segundo após o upgrade">
+            <p class="medidor-fase">Antes do upgrade</p>
+            <p class="medidor-numero"><b id="fps-numero">45</b> <span>FPS</span></p>
+            <svg viewBox="0 0 300 100" preserveAspectRatio="none">
+              <path class="grade" d="M0,25 H300 M0,50 H300 M0,75 H300"/>
+              <path class="linha" pathLength="100" d="M0,78 L18,74 L34,82 L52,73 L70,80 L88,76 L108,79 L126,58 L146,40 L164,26 L184,22 L204,27 L224,19 L246,23 L268,18 L300,21"/>
+            </svg>
+          </div>
+        </div>
+        <p class="fps-nota">Simulação ilustrativa, não é resultado medido. O ganho real depende das peças, do jogo e das configurações.</p>
+        <a class="btn" data-wa="Olá! Quero saber se um upgrade de placa de vídeo resolve o FPS do meu PC." href="https://wa.me/5511967150797">Perguntar sobre upgrade de placa de vídeo</a>
       </div>
     </section>
 
