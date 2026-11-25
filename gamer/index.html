@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Poppins:wght@400;500;600;700;800&display=swap">
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/gamer/gamer.css">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "LocalBusiness", "name": "LOUNGE Informática", "slogan": "Seu equipamento em boas mãos", "telephone": "+55-11-96715-0797", "email": "ti@loungeinformatica.com.br", "url": "https://lounge-informatica.vercel.app/gamer", "address": {"@type": "PostalAddress", "addressLocality": "São Bernardo do Campo", "addressRegion": "SP", "addressCountry": "BR"}, "areaServed": ["ABC Paulista", "São Paulo"], "sameAs": ["https://www.instagram.com/loungeinformaticaof"]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "LocalBusiness", "name": "LOUNGE Informática", "slogan": "Seu equipamento em boas mãos", "telephone": "+55-11-96715-0797", "url": "https://lounge-informatica.vercel.app/gamer", "address": {"@type": "PostalAddress", "addressLocality": "São Bernardo do Campo", "addressRegion": "SP", "addressCountry": "BR"}, "areaServed": ["ABC Paulista", "São Paulo"], "sameAs": ["https://www.instagram.com/loungeinformaticaof"], "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "09:15", "closes": "18:00"}, {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "15:00", "closes": "19:00"}]}</script>
 </head>
 <body class="tema-gamer">
   <a class="skip" href="#conteudo">Pular para o conteúdo</a>
@@ -49,7 +49,11 @@
           <a class="btn" data-wa="Olá! Quero um orçamento para o meu PC gamer." href="https://wa.me/5511967150797">Falar sobre meu PC gamer</a>
         </div>
         <div class="rig">
-          <div class="gabinete" data-cor="neon" aria-hidden="true">
+          <div class="torre" aria-hidden="true">
+            <div class="torre-topo"><span class="ligar"></span><span class="porta"></span><span class="porta"></span><span class="grelha"></span></div>
+            <div class="torre-corpo">
+              <div class="vidro">
+          <div class="gabinete">
             <div class="peca placa"></div>
             <svg class="peca tubos" viewBox="0 0 100 104">
               <path class="capa" d="M34,34 C26,20 34,24 44,17"/><path class="liquido" d="M34,34 C26,20 34,24 44,17"/>
@@ -67,12 +71,14 @@
             <div class="peca vga"><div class="peca fan f-vga f-v1"><i></i></div><div class="peca fan f-vga f-v2"><i></i></div><div class="peca fan f-vga f-v3"><i></i></div></div>
             <div class="peca base">LOUNGE</div>
           </div>
-          <div class="painel" role="group" aria-label="Controles da demonstração">
-            <button type="button" data-cor-set="neon" aria-pressed="true">Neon</button>
-            <button type="button" data-cor-set="arco" aria-pressed="false">Arco-íris</button>
-            <button type="button" data-cor-set="gelo" aria-pressed="false">Gelo</button>
+                <i class="parafuso p1"></i><i class="parafuso p2"></i><i class="parafuso p3"></i><i class="parafuso p4"></i>
+              </div>
+              <div class="torre-frente"><span></span></div>
+            </div>
+            <div class="torre-pes"><span></span><span></span></div>
+          </div>
+          <div class="painel">
             <button type="button" id="simular" aria-pressed="false">Simular jogo</button>
-            <button type="button" id="pausar" aria-pressed="false">Pausar animação</button>
           </div>
           <p class="rig-nota">Demonstração ilustrativa. A temperatura não é uma medição real.</p>
         </div>
@@ -137,23 +143,22 @@
       <div class="wrap two">
         <div class="intro">
           <h2>Fale com a LOUNGE</h2>
-          <p>Conte o problema e, se souber, as peças. A mensagem abre pronta no seu WhatsApp.</p>
-          <ul class="contacts">
-            <li><a href="https://wa.me/5511967150797">(11) 96715-0797</a></li>
-            <li><a href="tel:+5511978677597">(11) 97867-7597</a></li>
-            <li><a href="mailto:ti@loungeinformatica.com.br">ti@loungeinformatica.com.br</a></li>
-            <li><a href="https://www.instagram.com/loungeinformaticaof">@loungeinformaticaof no Instagram</a></li>
-          </ul>
-          <p>São Bernardo do Campo, ABC Paulista. Horários combinados pelo WhatsApp.</p>
+          <p>Conte o que está acontecendo com o seu PC. A conversa abre pronta no WhatsApp.</p>
+          <h3>Horário de atendimento</h3>
+          <dl class="horarios">
+            <div><dt>Segunda a sexta</dt><dd>09:15 às 18h</dd></div>
+            <div><dt>Sábado</dt><dd>15h às 19h</dd></div>
+          </dl>
+          <a class="insta" href="https://www.instagram.com/loungeinformaticaof"><span class="icone icone-insta" role="img" aria-label="Instagram"></span>@loungeinformaticaof</a>
+          <p>São Bernardo do Campo, ABC Paulista e São Paulo.</p>
         </div>
-        <form id="form-wa">
-          <input type="hidden" name="uso" value="PC gamer">
-          <label for="config">Quais são as peças do PC? (opcional)</label>
-          <input id="config" name="config" type="text" placeholder="Processador, vídeo, memória">
-          <label for="problema">O que está acontecendo?</label>
-          <textarea id="problema" name="problema" rows="5" required placeholder="Ex.: o jogo trava depois de alguns minutos e o PC esquenta muito"></textarea>
-          <button class="btn" type="submit">Continuar no WhatsApp</button>
-        </form>
+        <div class="zap">
+          <span class="icone icone-zap" aria-hidden="true"></span>
+          <p>Atendimento pelo WhatsApp</p>
+          <p class="zap-numero">(11) 96715-0797</p>
+          <a class="btn" data-wa="Olá! Quero um orçamento para o meu PC gamer." href="https://wa.me/5511967150797">Abrir conversa no WhatsApp</a>
+          <p class="zap-dica">Se souber, envie as peças do PC: processador, placa de vídeo e memória.</p>
+        </div>
       </div>
     </section>
   </main>
@@ -164,6 +169,7 @@
       <p>Seu equipamento em boas mãos.</p>
     </div>
   </footer>
+  <a class="zap-flutuante" data-wa="Olá! Quero um orçamento para o meu PC gamer." href="https://wa.me/5511967150797" aria-label="Chamar no WhatsApp"><span class="icone icone-zap" aria-hidden="true"></span></a>
   <script src="/script.js" defer></script>
   <script src="/gamer/gamer.js" defer></script>
 </body>

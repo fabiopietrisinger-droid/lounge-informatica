@@ -27,8 +27,8 @@ Os caminhos começam com `/`, então abrir o `index.html` direto com dois clique
 
 | O que | Arquivo |
 |---|---|
-| Textos, serviços, telefones, e-mail | `index.html`, `empresas/index.html`, `gamer/index.html` |
-| Número do WhatsApp dos botões e do formulário | `script.js` (e os `href` de `wa.me` nas páginas) |
+| Textos, serviços, telefone, horários | `index.html`, `empresas/index.html`, `gamer/index.html` |
+| Número do WhatsApp dos botões | `script.js` (e os `href` e o número escrito nas páginas) |
 | Cores e layout | `styles.css` |
 | Logo e imagem de compartilhamento | `assets/` |
 
