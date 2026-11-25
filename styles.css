@@ -189,3 +189,12 @@ footer b { color: var(--ice); }
   .ask { padding: 96px 0 72px; }
   .choice { min-height: 580px; }
 }
+
+/* quem cuida na versão empresas: o fundo da seção continua o fundo do retrato, sem borda */
+.tema-empresas .about { background: #F1EEE9; }
+.tema-empresas .retrato { width: 327px; border-radius: 0; }
+@media (min-width: 861px) {
+  .tema-empresas .about .two { grid-template-columns: minmax(0, 24rem) minmax(0, 34rem); justify-content: center; align-items: center; }
+  .tema-empresas .about .two > div:first-child { text-align: center; }
+  .tema-empresas .about .retrato { margin-inline: auto; }
+}
