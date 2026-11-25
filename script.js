@@ -7,22 +7,12 @@ document.querySelectorAll("[data-wa]").forEach((el) => {
   el.href = linkWhatsApp(el.dataset.wa);
 });
 
-// Abertura: trabalho ou jogo
-const hero = document.querySelector(".hero");
-hero.querySelectorAll("[data-set]").forEach((botao) => {
-  botao.addEventListener("click", () => {
-    const modo = botao.dataset.set;
-    hero.dataset.mode = modo;
-    hero.querySelectorAll("[data-set]").forEach((b) => b.setAttribute("aria-pressed", String(b === botao)));
-    hero.querySelector(".pane-trabalho").hidden = modo !== "trabalho";
-    hero.querySelector(".pane-gamer").hidden = modo !== "gamer";
-  });
-});
-
 // Formulário: nada é armazenado, só monta a mensagem do WhatsApp
-document.getElementById("form-wa").addEventListener("submit", (evento) => {
+document.getElementById("form-wa")?.addEventListener("submit", (evento) => {
   evento.preventDefault();
-  const { uso, problema } = evento.target.elements;
-  const texto = `Olá! Vim pelo site.\nUso: ${uso.value}\nProblema: ${problema.value.trim()}`;
-  window.open(linkWhatsApp(texto), "_blank", "noopener");
+  const { uso, config, problema } = evento.target.elements;
+  const linhas = ["Olá! Vim pelo site.", `Uso: ${uso.value}`];
+  if (config?.value.trim()) linhas.push(`Peças: ${config.value.trim()}`);
+  linhas.push(`Problema: ${problema.value.trim()}`);
+  window.open(linkWhatsApp(linhas.join("\n")), "_blank", "noopener");
 });

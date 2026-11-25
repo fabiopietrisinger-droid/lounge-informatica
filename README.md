@@ -1,6 +1,12 @@
 # Site da LOUNGE Informática
 
-Site de uma página em HTML, CSS e JavaScript puros. Não precisa de instalação nem de build.
+Site em HTML, CSS e JavaScript puros, com uma versão para cada público:
+
+- `/` escolha do público (`index.html`)
+- `/empresas` empresas e home office (`empresas/index.html`)
+- `/gamer` PC gamer (`gamer/index.html`)
+
+Não precisa de instalação nem de build.
 
 ## Publicar na Vercel
 
@@ -21,8 +27,8 @@ Os caminhos começam com `/`, então abrir o `index.html` direto com dois clique
 
 | O que | Arquivo |
 |---|---|
-| Textos, serviços, telefones, e-mail | `index.html` |
-| Número do WhatsApp dos botões e do formulário | `script.js` (e os `href` de `wa.me` no `index.html`) |
+| Textos, serviços, telefones, e-mail | `index.html`, `empresas/index.html`, `gamer/index.html` |
+| Número do WhatsApp dos botões e do formulário | `script.js` (e os `href` de `wa.me` nas páginas) |
 | Cores e layout | `styles.css` |
 | Logo e imagem de compartilhamento | `assets/` |
 
@@ -30,4 +36,4 @@ Os caminhos começam com `/`, então abrir o `index.html` direto com dois clique
 
 https://lounge-informatica.vercel.app
 
-Se mudar de domínio, atualize `og:url`, `og:image` e `canonical` no `index.html`.
+Se mudar de domínio, atualize `og:url`, `og:image` e `canonical` nas três páginas.

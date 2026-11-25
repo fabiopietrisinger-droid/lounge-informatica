@@ -42,24 +42,33 @@ nav { display: flex; gap: 26px; font-size: .93rem; font-weight: 500; }
 nav a { text-decoration: none; }
 nav a:hover { text-decoration: underline; text-underline-offset: 6px; }
 
-/* abertura: muda de cara conforme o uso */
-.hero { background: var(--navy); color: var(--ice); padding: 56px 0 28px; transition: background-color .35s; }
-.hero[data-mode="gamer"] { background: var(--graphite); }
+/* abertura de cada versão */
+.hero { background: var(--navy); color: var(--ice); padding: 56px 0 28px; }
 .hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 48px; align-items: center; min-height: 430px; }
-.switch { display: inline-flex; flex-wrap: wrap; gap: 4px; padding: 5px; margin-bottom: 36px; border: 1px solid #ffffff40; border-radius: 16px; }
-.switch button { font: 500 .93rem Poppins, Arial, sans-serif; color: var(--ice); background: transparent; border: 0; border-radius: 11px; padding: 10px 18px; cursor: pointer; }
-.switch button[aria-pressed="true"] { background: var(--ice); color: var(--navy); font-weight: 600; }
-.pane p { margin: 20px 0 30px; font-size: 1.12rem; max-width: 33rem; color: #C5D2E0; }
-.pane-gamer h1 { font-family: "Chakra Petch", Poppins, sans-serif; font-weight: 700; color: var(--ice); }
-.hero[data-mode="gamer"] .switch, .hero[data-mode="gamer"] .switch button { border-radius: 2px; }
-.hero[data-mode="gamer"] .switch button[aria-pressed="true"] { background: var(--violet); color: var(--graphite); }
-.hero[data-mode="gamer"] .btn { background: var(--cyan); border-radius: 2px; }
+.hero-text p { margin: 20px 0 30px; font-size: 1.12rem; max-width: 33rem; color: #C5D2E0; }
 .hero-art svg { display: block; width: 100%; max-width: 430px; height: auto; margin-inline: auto; --frame: var(--ice); --accent: var(--blue); --hub: var(--navy); }
-.hero[data-mode="gamer"] .hero-art svg { --accent: var(--violet); --frame: var(--cyan); --hub: var(--graphite); }
-.gear { transform-box: fill-box; transform-origin: center; transition: transform 1.1s cubic-bezier(.2,.7,.2,1); }
-.hero[data-mode="gamer"] .gear { transform: rotate(160deg); }
-.hero[data-mode="gamer"] .gear:nth-of-type(even) { transform: rotate(-160deg); }
+.gear { transform-box: fill-box; transform-origin: center; animation: girar 1.4s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes girar { from { transform: rotate(-160deg); } to { transform: rotate(0); } }
 .hero-note { margin-top: 40px; padding-top: 20px; border-top: 1px solid #ffffff26; font-size: .93rem; color: #C5D2E0; }
+
+/* troca de versão no topo */
+.versions { display: flex; gap: 3px; padding: 3px; border: 1px solid #C9D3DE; border-radius: 12px; font-size: .85rem; font-weight: 600; }
+.versions a { text-decoration: none; padding: 5px 12px; border-radius: 9px; }
+.versions a[aria-current="page"] { background: var(--navy); color: #fff; }
+
+/* página inicial: escolha da versão */
+.ask { padding: 52px 0 36px; }
+.ask p { margin-top: 12px; color: var(--gray); }
+.choices { display: grid; grid-template-columns: 1fr 1fr; }
+.choice { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 18px; min-height: 420px; padding: 56px clamp(24px, 6vw, 96px); text-decoration: none; color: var(--ice); }
+.choice h2 { font-size: clamp(2rem, 4vw, 3.2rem); }
+.choice p { max-width: 24rem; color: #C5D2E0; }
+.choice-trabalho { background: var(--navy); }
+.choice-gamer { background: var(--graphite); }
+.choice-gamer h2 { font-family: "Chakra Petch", Poppins, sans-serif; color: var(--violet); }
+.choice-gamer .btn { background: var(--cyan); border-radius: 2px; }
+.choice:hover .btn { filter: brightness(1.1); }
+.choice:focus-visible { outline-offset: -8px; }
 
 /* blocos */
 .block { padding: 92px 0; }
@@ -69,13 +78,6 @@ nav a:hover { text-decoration: underline; text-underline-offset: 6px; }
 .services div { display: grid; grid-template-columns: .85fr 1.15fr; gap: 24px; padding: 22px 0; border-bottom: 1px solid #5B687755; }
 .services dt { font-weight: 600; line-height: 1.35; }
 .services dd { color: var(--gray); font-size: .95rem; }
-
-.gamer { background: var(--graphite); color: var(--ice); }
-.gamer h2, .gamer dt { font-family: "Chakra Petch", Poppins, sans-serif; }
-.gamer h2 { color: var(--violet); }
-.gamer dt { font-size: 1.12rem; }
-.gamer dd { color: #AAB4C8; }
-.gamer .services { border-top-color: var(--cyan); }
 
 /* etapas ligadas por um cabo, como no logo */
 .steps { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; margin-top: 48px; counter-reset: etapa; }
@@ -93,11 +95,34 @@ nav a:hover { text-decoration: underline; text-underline-offset: 6px; }
 .contacts li { margin-bottom: 8px; overflow-wrap: anywhere; }
 form { background: #fff; color: var(--navy); border-radius: 24px; padding: 32px; display: grid; gap: 10px; }
 label { font-weight: 600; font-size: .95rem; }
-select, textarea { width: 100%; font: 400 1rem Poppins, Arial, sans-serif; color: var(--navy); padding: 13px 14px; border: 1px solid #A9B7C6; border-radius: 10px; background: #fff; margin-bottom: 12px; }
+input[type="text"], select, textarea { width: 100%; font: 400 1rem Poppins, Arial, sans-serif; color: var(--navy); padding: 13px 14px; border: 1px solid #A9B7C6; border-radius: 10px; background: #fff; margin-bottom: 12px; }
 textarea { resize: vertical; }
 
 footer { background: var(--graphite); color: #AAB4C8; padding: 34px 0; font-size: .92rem; }
 footer b { color: var(--ice); }
+
+/* versão gamer: a página inteira muda */
+.tema-gamer { background: var(--graphite); color: var(--ice); }
+.tema-gamer h1, .tema-gamer h2, .tema-gamer h3, .tema-gamer dt, .tema-gamer .lead { font-family: "Chakra Petch", Poppins, sans-serif; }
+.tema-gamer .top { background: var(--graphite); border-bottom-color: #232D4A; }
+.tema-gamer .brand small { color: var(--cyan); }
+.tema-gamer .versions { border-color: #3A4766; border-radius: 2px; }
+.tema-gamer .versions a { border-radius: 2px; }
+.tema-gamer .versions a[aria-current="page"] { background: var(--violet); color: var(--graphite); }
+.tema-gamer .btn { background: var(--cyan); color: var(--graphite); border-radius: 2px; }
+.tema-gamer .hero, .tema-gamer .contact { background: var(--graphite); }
+.tema-gamer .hero-art svg { --accent: var(--violet); --frame: var(--cyan); --hub: var(--graphite); }
+.tema-gamer .offer, .tema-gamer .about { background: #151C31; }
+.tema-gamer .offer h2 { color: var(--violet); }
+.tema-gamer .services { border-top-color: var(--cyan); }
+.tema-gamer dd, .tema-gamer .steps p { color: #AAB4C8; }
+.tema-gamer dt { font-size: 1.12rem; }
+.tema-gamer .steps li::before { background: var(--violet); color: var(--graphite); border-radius: 2px; }
+.tema-gamer .steps li:not(:last-child)::after { background: var(--cyan); }
+.tema-gamer form { background: #151C31; color: var(--ice); border: 1px solid var(--violet); border-radius: 2px; }
+.tema-gamer input[type="text"], .tema-gamer textarea { background: var(--graphite); color: var(--ice); border-color: #3A4766; border-radius: 2px; }
+.tema-gamer ::placeholder { color: #8591AC; }
+.tema-gamer footer, .inicio footer { border-top: 1px solid #232D4A; }
 
 @media (max-width: 860px) {
   nav { display: none; }
@@ -110,13 +135,24 @@ footer b { color: var(--ice); }
   .steps { grid-template-columns: 1fr; gap: 30px; }
   .steps li { padding: 0 0 0 68px; }
   .steps li:not(:last-child)::after { top: 46px; left: 21px; width: 4px; height: calc(100% - 16px); }
+  .choices { grid-template-columns: 1fr; }
+  .choice { min-height: 0; padding: 40px 20px; }
+  .ask { padding: 32px 0 26px; }
 }
 @media (max-width: 520px) {
   .services div { grid-template-columns: 1fr; gap: 6px; }
-  .switch { display: grid; width: 100%; }
+  .brand span { display: none; }
+  .inicio .brand span { display: block; }
   form { padding: 22px; }
+}
+@media (max-width: 360px) {
+  .top-row { gap: 8px; }
+  .brand img { width: 40px; height: auto; }
+  .versions { font-size: .78rem; }
+  .versions a { padding: 5px 8px; }
+  .btn-small { padding: 8px 10px; font-size: .8rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .hero, .gear { transition: none; }
+  .gear { animation: none; }
 }
