@@ -73,6 +73,15 @@
 .tema-gamer form { box-shadow: 0 0 24px #9D7BFF55; }
 .tema-gamer :is(input, textarea):focus { border-color: var(--cyan); box-shadow: 0 0 14px #35D8FF66; }
 
+/* fotos com moldura neon e uma linha de varredura */
+.tema-gamer .vitrine { padding: 64px 0 56px; }
+.tema-gamer .vitrine img, .tema-gamer .foto img { border-radius: 2px; border: 1px solid #9D7BFF; box-shadow: 0 0 14px #9D7BFF88, 0 0 60px #35D8FF33; }
+.tema-gamer .vitrine figure { position: relative; }
+.tema-gamer .vitrine figure::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 2px; background: #35D8FF; box-shadow: 0 0 16px 4px #35D8FF99; opacity: 0; animation: varrer 6s linear infinite; pointer-events: none; }
+@keyframes varrer { 0% { top: 0; opacity: 0; } 8%, 42% { opacity: .8; } 50%, 100% { top: calc(100% - 30px); opacity: 0; } }
+.tema-gamer .foto { margin-top: 8px; }
+.tema-gamer .retrato { border: 1px solid #35D8FF; box-shadow: 0 0 16px #35D8FF88, 0 0 50px #9D7BFF66; }
+
 /* botão "Pausar animação" */
 .parado *, .parado *::before, .parado *::after { animation-play-state: paused !important; }
 
