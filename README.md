@@ -4,7 +4,7 @@ Site em HTML, CSS e JavaScript puros, com uma versão para cada público:
 
 - `/` escolha do público (`index.html`)
 - `/empresas` empresas e home office (`empresas/index.html`)
-- `/gamer` PC gamer (`gamer/index.html`)
+- `/gamer` PC gamer (`gamer/index.html`, com a cena animada em `gamer/gamer.css` e `gamer/gamer.js`)
 
 Não precisa de instalação nem de build.
 

@@ -1,0 +1,87 @@
+/* Cena do gabinete e efeitos neon: só a página gamer usa este arquivo */
+@property --giro-cor { syntax: "<angle>"; initial-value: 0deg; inherits: true; }
+
+.tema-gamer .hero { position: relative; isolation: isolate; overflow: hidden; padding-top: 40px; }
+.tema-gamer .hero > .wrap { position: relative; z-index: 1; }
+.tema-gamer .hero-grid { grid-template-columns: .92fr 1.08fr; }
+.tema-gamer h1 { font-size: clamp(2.4rem, 5.2vw, 4.1rem); text-shadow: 0 0 6px #9D7BFFcc, 0 0 28px #9D7BFF99, 0 0 60px #9D7BFF55; }
+.tema-gamer .offer h2 { text-shadow: 0 0 18px #9D7BFF99; }
+.tema-gamer .btn { box-shadow: 0 0 10px #35D8FFaa, 0 0 34px #35D8FF55; transition: box-shadow .25s, filter .25s; }
+.tema-gamer .btn:hover { box-shadow: 0 0 16px #35D8FF, 0 0 54px #35D8FF99; }
+
+/* piso em grade e brilho de fundo */
+.piso { position: absolute; left: -50%; right: -50%; bottom: 0; height: 40%; transform: perspective(360px) rotateX(62deg); transform-origin: bottom; overflow: hidden; -webkit-mask-image: linear-gradient(transparent, #000 70%); mask-image: linear-gradient(transparent, #000 70%); opacity: .38; }
+.piso::before { content: ""; position: absolute; inset: -60px 0 0; background: repeating-linear-gradient(90deg, #9D7BFF 0 1px, transparent 1px 60px), repeating-linear-gradient(#35D8FF 0 1px, transparent 1px 60px); animation: avancar 2.4s linear infinite; }
+@keyframes avancar { to { transform: translateY(60px); } }
+
+/* gabinete */
+.rig { width: 100%; max-width: 560px; margin-inline: auto; container-type: inline-size; }
+.gabinete { --c1: #35D8FF; --c2: #9D7BFF; --c3: #FF4FD8; position: relative; aspect-ratio: 100 / 104; background: linear-gradient(150deg, #1B2340, #070A15 55%, #121932); border: 1px solid #ffffff2e; border-radius: 3cqw; box-shadow: 0 0 0 .6cqw #05070F, 0 0 4cqw color-mix(in srgb, var(--c2) 55%, transparent), 0 0 14cqw color-mix(in srgb, var(--c1) 28%, transparent); overflow: hidden; animation: girar-cor 7s linear infinite; }
+.gabinete[data-cor="arco"] { --c1: hsl(from #ff3d6e calc(h + var(--giro-cor) / 1deg) s l); --c2: hsl(from #35d8ff calc(h + var(--giro-cor) / 1deg) s l); --c3: hsl(from #8dff4f calc(h + var(--giro-cor) / 1deg) s l); }
+.gabinete[data-cor="gelo"] { --c1: #35D8FF; --c2: #DDF8FF; --c3: #2F7BFF; }
+@keyframes girar-cor { to { --giro-cor: 360deg; } }
+.gabinete::after { content: ""; position: absolute; inset: 0; background: linear-gradient(115deg, transparent 38%, #ffffff12 46%, transparent 54%); pointer-events: none; }
+.peca { position: absolute; }
+
+.fan { position: absolute; width: var(--d); aspect-ratio: 1; border-radius: 50%; background: #05070F; filter: drop-shadow(0 0 1.6cqw var(--c2)); }
+.fan::before { content: ""; position: absolute; inset: 0; border-radius: 50%; background: conic-gradient(var(--c1), var(--c2), var(--c3), var(--c1)); -webkit-mask: radial-gradient(closest-side, transparent 80%, #000 82%); mask: radial-gradient(closest-side, transparent 80%, #000 82%); animation: rodar 3s linear infinite; }
+.fan i { position: absolute; inset: 13%; border-radius: 50%; background: repeating-conic-gradient(from 0deg, color-mix(in srgb, var(--c1) 75%, transparent) 0 8deg, color-mix(in srgb, var(--c2) 30%, transparent) 20deg 24deg, transparent 25deg 40deg); animation: rodar .9s linear infinite; }
+.fan i::after { content: ""; position: absolute; inset: 33%; border-radius: 50%; background: #0B1020; border: .4cqw solid var(--c2); }
+@keyframes rodar { to { transform: rotate(360deg); } }
+
+.f-topo { --d: 17cqw; top: 3cqw; }
+.f-t1 { left: 22cqw; } .f-t2 { left: 41cqw; } .f-t3 { left: 60cqw; }
+.f-lado { --d: 18cqw; right: 3cqw; }
+.f-l1 { top: 24cqw; } .f-l2 { top: 44cqw; } .f-l3 { top: 64cqw; }
+.f-tras { --d: 15cqw; left: 3cqw; top: 25cqw; }
+
+.placa { left: 20cqw; top: 23cqw; width: 54cqw; height: 54cqw; border-radius: 1.5cqw; border: 1px solid #ffffff1c; background: repeating-linear-gradient(90deg, #ffffff0a 0 1px, transparent 1px 4cqw), repeating-linear-gradient(#ffffff08 0 1px, transparent 1px 4cqw), #0D1328; }
+.tubos { inset: 0; width: 100%; height: 100%; fill: none; }
+.tubos .capa { stroke: #05070F; stroke-width: 3.4; stroke-linecap: round; }
+.tubos .liquido { stroke: var(--c1); stroke-width: 1.2; stroke-linecap: round; stroke-dasharray: 3 4; animation: fluir .8s linear infinite; filter: drop-shadow(0 0 1px var(--c1)); }
+@keyframes fluir { to { stroke-dashoffset: -14; } }
+
+.bomba { left: 25cqw; top: 31cqw; width: 28cqw; aspect-ratio: 1; border-radius: 50%; display: grid; place-items: center; background: conic-gradient(var(--c1) calc(var(--temp-p, 38) * 1%), #1C2547 0); box-shadow: 0 0 3cqw var(--c1), 0 0 8cqw color-mix(in srgb, var(--c2) 60%, transparent); }
+.visor { width: 86%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(#131B38, #04060D); display: grid; place-content: center; text-align: center; line-height: 1; font-family: "Chakra Petch", Poppins, sans-serif; color: #fff; }
+.visor b { font-size: 9cqw; font-weight: 700; font-variant-numeric: tabular-nums; text-shadow: 0 0 2cqw var(--c1); }
+.visor small { font-size: 2.6cqw; color: #AAB4C8; margin-top: 1cqw; }
+
+.ram { top: 27cqw; width: 2.4cqw; height: 31cqw; border-radius: .5cqw; background: linear-gradient(var(--c1), var(--c2), var(--c3), var(--c1)); background-size: 100% 300%; box-shadow: 0 0 2cqw var(--c2); animation: onda 2.2s linear infinite; }
+@keyframes onda { to { background-position: 0 300%; } }
+.r1 { left: 59cqw; } .r2 { left: 62.8cqw; animation-delay: -.3s; } .r3 { left: 66.6cqw; animation-delay: -.6s; } .r4 { left: 70.4cqw; animation-delay: -.9s; }
+
+.vga { left: 9cqw; top: 66cqw; width: 67cqw; height: 17cqw; border-radius: 1.5cqw; background: linear-gradient(#222B4E, #0A0F20); border: 1px solid #ffffff30; box-shadow: 0 1cqw 3cqw #000a; }
+.vga::before { content: ""; position: absolute; left: 4%; right: 4%; top: 9%; height: .8cqw; border-radius: 1cqw; background: linear-gradient(90deg, var(--c1), var(--c2), var(--c3), var(--c1)); background-size: 200% 100%; box-shadow: 0 0 2.4cqw var(--c2); animation: correr 2s linear infinite; }
+@keyframes correr { to { background-position: 200% 0; } }
+.f-vga { --d: 11.5cqw; top: 4cqw; }
+.f-v1 { left: 5cqw; } .f-v2 { left: 27cqw; } .f-v3 { left: 49cqw; }
+
+.base { left: 0; right: 0; bottom: 0; height: 18cqw; background: linear-gradient(#141B36, #070A15); border-top: .5cqw solid var(--c1); box-shadow: 0 -1cqw 4cqw color-mix(in srgb, var(--c1) 55%, transparent); display: flex; align-items: center; padding-left: 7cqw; font: 700 7cqw "Chakra Petch", Poppins, sans-serif; color: #fff; text-shadow: 0 0 2cqw var(--c2), 0 0 5cqw var(--c2); }
+
+.painel { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 22px; }
+.painel button { font: 600 .88rem Poppins, Arial, sans-serif; color: var(--ice); background: #151C31cc; border: 1px solid #3A4766; border-radius: 2px; padding: 9px 14px; cursor: pointer; }
+.painel button:hover { border-color: var(--cyan); }
+.painel button[aria-pressed="true"] { background: var(--violet); border-color: var(--violet); color: var(--graphite); box-shadow: 0 0 18px #9D7BFF99; }
+.rig-nota { margin-top: 12px; text-align: center; font-size: .8rem; color: #8F9AB5; }
+
+/* o resto da página acompanha */
+.tema-gamer .services div { transition: background .25s, box-shadow .25s; padding-inline: 14px; }
+.tema-gamer .services div:hover { background: #1D2644; box-shadow: inset 3px 0 0 var(--cyan), 0 0 26px #35D8FF33; }
+.tema-gamer .steps li::before { box-shadow: 0 0 18px #9D7BFFaa; }
+.tema-gamer .steps li:not(:last-child)::after { background: linear-gradient(90deg, #35D8FF55 0 35%, #fff 50%, #35D8FF55 65%); background-size: 200% 100%; box-shadow: 0 0 10px #35D8FF88; animation: pulso 2.2s linear infinite; }
+@keyframes pulso { from { background-position: 100% 0; } to { background-position: -100% 0; } }
+.tema-gamer form { box-shadow: 0 0 24px #9D7BFF55; }
+.tema-gamer :is(input, textarea):focus { border-color: var(--cyan); box-shadow: 0 0 14px #35D8FF66; }
+
+/* botão "Pausar animação" */
+.parado *, .parado *::before, .parado *::after { animation-play-state: paused !important; }
+
+@media (max-width: 860px) {
+  .tema-gamer .hero-grid { grid-template-columns: 1fr; }
+  .rig { max-width: 440px; }
+  .tema-gamer .steps li:not(:last-child)::after { background: linear-gradient(#35D8FF55 0 35%, #fff 50%, #35D8FF55 65%); background-size: 100% 200%; animation-name: pulso-v; }
+}
+@keyframes pulso-v { from { background-position: 0 100%; } to { background-position: 0 -100%; } }
+@media (prefers-reduced-motion: reduce) {
+  .tema-gamer *, .tema-gamer *::before, .tema-gamer *::after { animation: none !important; }
+}
