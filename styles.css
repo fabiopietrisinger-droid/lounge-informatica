@@ -198,3 +198,11 @@ footer b { color: var(--ice); }
   .tema-empresas .about .two > div:first-child { text-align: center; }
   .tema-empresas .about .retrato { margin-inline: auto; }
 }
+
+/* página inicial no celular: os dois quadros separados */
+@media (max-width: 860px) {
+  .inicio .choices { gap: 32px; padding: 0 20px 40px; }
+  .inicio .choice { padding: 48px 24px; }
+  .inicio .choice-trabalho { border-radius: 24px; }
+  .inicio .choice-gamer { border-radius: 4px; }
+}
