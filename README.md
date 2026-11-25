@@ -26,7 +26,8 @@ Os caminhos começam com `/`, então abrir o `index.html` direto com dois clique
 | Cores e layout | `styles.css` |
 | Logo e imagem de compartilhamento | `assets/` |
 
-## Depois de ter o domínio
+## Endereço
 
-Em `index.html`, troque `/assets/og.png` pelo endereço completo (`https://seudominio/assets/og.png`)
-para a imagem aparecer ao compartilhar o link.
+https://lounge-informatica.vercel.app
+
+Se mudar de domínio, atualize `og:url`, `og:image` e `canonical` no `index.html`.
